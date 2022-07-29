@@ -1,0 +1,99 @@
+<!-- Draggable DIV -->
+<div id="mydiv">
+  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+  <div id="mydivheader">  <button id="toggler" onclick="toggle(`target`)">X</button>
+Window</div>
+<iframe src="https://bing.com" width="100%" height="100%"></iframe>
+
+</div>
+<style>#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #999999;
+  text-align: right;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #666666;
+  color: #fff;
+}</style>
+<script>// Make the DIV element draggable:
+    function toggle(elementId) {
+      const element = document.getElementById("mydiv");
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+var element = document.getElementById('mydiv');
+var resizer = document.createElement('div');
+resizer.className = 'resizer';
+resizer.style.width = '10px';
+resizer.style.height = '10px';
+resizer.style.background = 'red';
+resizer.style.position = 'absolute';
+resizer.style.right = 0;
+resizer.style.bottom = 0;
+resizer.style.cursor = 'se-resize';
+element.appendChild(resizer);
+resizer.addEventListener('mousedown', initResize, false);
+
+function initResize(e) {
+   window.addEventListener('mousemove', Resize, false);
+   window.addEventListener('mouseup', stopResize, false);
+}
+function Resize(e) {
+   element.style.width = (e.clientX - element.offsetLeft) + 'px';
+   element.style.height = (e.clientY - element.offsetTop) + 'px';
+}
+function stopResize(e) {
+    window.removeEventListener('mousemove', Resize, false);
+    window.removeEventListener('mouseup', stopResize, false);
+}
+</script>
