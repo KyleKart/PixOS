@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 9;
   background-color: #999999;
-  text-align: right;
+  text-align: left;
 }
 
 #mydivheader {
@@ -11,4 +11,3 @@
   z-index: 10;
   background-color: #666666;
   color: #fff;
-}
