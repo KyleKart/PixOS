@@ -1,8 +1,8 @@
 var element = document.getElementById('mydiv');
 var resizer = document.createElement('div');
 resizer.className = 'resizer';
-resizer.style.width = '10px';
-resizer.style.height = '10px';
+resizer.style.width = '20px';
+resizer.style.height = '20px';
 resizer.style.background = 'red';
 resizer.style.position = 'absolute';
 resizer.style.right = 0;
