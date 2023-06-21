@@ -19,8 +19,8 @@
  border-color:#8b0303;
  transform:translatex(-3px) translatey(0px);
 }
+
 .taskbar {
-  height: 40px;
   width: 100%;
   background-color: #1c1c1c;
   color: #fff;
@@ -28,14 +28,10 @@
   bottom: 0;
   left: 0;
   z-index: 999;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100%;
+  height: 40px;
 }
 
 .start-button {
@@ -50,35 +46,25 @@
 
 .taskbar-icons {
   display: flex;
-  height: 100%;
-  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.icon {
+.taskbar-icons li {
   margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.icon img {
+.taskbar-icons img {
   height: 20px;
 }
 
-.icon span {
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-}
-
 .system-icons {
-  margin-left: auto;
   display: flex;
   align-items: center;
-  height: 100%;
 }
 
-.system-icon {
+.system-icons img {
   margin-left: 1rem;
   height: 20px;
 }
