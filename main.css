@@ -11,3 +11,11 @@
   z-index: 10;
   background-color: #666666;
   color: #fff;
+  
+/* Toggler */
+#toggler{
+ background-color:#f20202;
+ border-style:dotted;
+ border-color:#8b0303;
+ transform:translatex(-3px) translatey(0px);
+}
